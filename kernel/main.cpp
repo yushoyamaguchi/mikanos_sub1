@@ -38,8 +38,10 @@
 #include "fat.hpp"
 #include "syscall.hpp"
 #include "uefi.hpp"
+#include "net/net.h"
+#include "net/port/mikanos.hpp"
 
-__attribute__((format(printf, 1, 2))) int printk(const char* format, ...) {
+extern "C" int printk(const char* format, ...) {
   va_list ap;
   int result;
   char s[1024];
@@ -223,6 +225,8 @@ extern "C" void KernelMainNewStack(
   usb::xhci::Initialize();
   InitializeKeyboard();
   InitializeMouse();
+
+  net_init();
 
   app_loads = new std::map<fat::DirectoryEntry*, AppLoadInfo>;
   task_manager->NewTask()
