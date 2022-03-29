@@ -47,6 +47,9 @@ cond_destroy(cond_t *cond);
 extern void
 softirq(void);
 
+extern void
+e1000_probe(void);
+
 #ifdef __cplusplus
 }
 #endif

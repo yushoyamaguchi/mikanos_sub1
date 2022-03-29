@@ -40,6 +40,7 @@
 #include "uefi.hpp"
 #include "net/net.h"
 #include "net/port/mikanos.hpp"
+#include "net/driver/e1000.h"
 
 extern "C" int printk(const char* format, ...) {
   va_list ap;
@@ -227,6 +228,8 @@ extern "C" void KernelMainNewStack(
   InitializeMouse();
 
   net_init();
+  e1000_probe();
+  net_run();
 
   app_loads = new std::map<fat::DirectoryEntry*, AppLoadInfo>;
   task_manager->NewTask()
@@ -305,6 +308,9 @@ extern "C" void KernelMainNewStack(
       task_manager->SendMessage(msg->src_task, Message{Message::kLayerFinish});
       __asm__("sti");
       break;
+    case Message::kInterruptE1000:
+      e1000_intr();
+      break;  
     default:
       Log(kError, "Unknown message type: %d\n", msg->type);
     }
