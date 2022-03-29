@@ -4,6 +4,7 @@
 #include <cerrno>
 #include <sys/time.h>
 
+
 #include "task.hpp"
 #include "timer.hpp"
 #include "logger.hpp"
@@ -94,21 +95,43 @@ hexdump(FILE *fp, const void *data, size_t size)
     funlockfile(fp);
 }
 
+static inline u_int32_t
+xchg(volatile u_int32_t *addr, u_int32_t newval) {
+	u_int32_t result;
+
+	// The + in "+m" denotes a read-modify-write operand.
+	asm volatile("lock; xchgl %0, %1"
+		     : "+m" (*addr), "=a" (result)
+		     : "1" (newval)
+		     : "cc");
+	return result;
+}
+
 int
 mutex_init(mutex_t *mutex, const void *attr)
 {
+    __asm__("cli");
+    __asm__("sti");
     return 0;
 }
 
 int
 mutex_lock(mutex_t *mutex)
 {
+    __asm__("cli");
+    while (xchg(&mutex->locked, 1) != 0){
+        asm volatile ("pause");
+    }
+    __asm__("sti");
     return 0;
 }
 
 int
 mutex_unlock(mutex_t *mutex)
 {
+    __asm__("cli");
+    xchg(&mutex->locked, 0);
+    __asm__("sti");
     return 0;
 }
 

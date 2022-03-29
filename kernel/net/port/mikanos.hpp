@@ -18,7 +18,7 @@ hexdump(FILE *fp, const void *data, size_t size);
 #define MUTEX_INITIALIZER {}
 
 typedef struct {
-    uint8_t _unused;
+    uint32_t locked;
 } mutex_t;
 
 extern int
