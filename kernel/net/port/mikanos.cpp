@@ -14,6 +14,9 @@
 #include "net/util.h"
 #include "net/driver/e1000.h"
 
+static int ncli=0;
+
+
 void
 flockfile(FILE *fp)
 {
@@ -105,6 +108,18 @@ xchg(volatile u_int32_t *addr, u_int32_t newval) {
 		     : "1" (newval)
 		     : "cc");
 	return result;
+}
+
+void pushcli(void) {
+    __asm__("cli");
+    ncli += 1;
+}
+
+void popcli(void) {
+    ncli--;
+    if(ncli == 0){
+        __asm__("sti");
+    }
 }
 
 int
