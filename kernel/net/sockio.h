@@ -1,80 +1,19 @@
 #pragma once
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "ioccom.h"
 
-#include <stdint.h>
-
-#include "sockio.h"
-#include "ip.h"
-
-#define PF_UNSPEC   0
-#define PF_LOCAL    1
-#define PF_INET     2
-#define PF_INET6   10
-
-#define AF_UNSPEC   PF_UNSPEC
-#define AF_LOCAL    PF_LOCAL
-#define AF_INET     PF_INET
-#define AF_INET6    PF_INET6
-
-#define SOCK_STREAM 1
-#define SOCK_DGRAM  2
-
-#define IPPROTO_TCP 0
-#define IPPROTO_UDP 0
-
-#define INADDR_ANY ((ip_addr_t)0)
-
-struct socket {
-    int used;
-    int family;
-    int type;
-    int desc;
-};
-
-struct sockaddr {
-    unsigned short sa_family;
-    char sa_data[14];
-};
-
-struct sockaddr_in {
-    unsigned short sin_family;
-    uint16_t sin_port;
-    ip_addr_t sin_addr;
-};
-
-#define IFNAMSIZ 16
-
-struct ifreq {
-    char ifr_name[IFNAMSIZ]; /* Interface name */
-    union {
-        struct sockaddr ifr_addr;
-        struct sockaddr ifr_dstaddr;
-        struct sockaddr ifr_broadaddr;
-        struct sockaddr ifr_netmask;
-        struct sockaddr ifr_hwaddr;
-        short           ifr_flags;
-        int             ifr_ifindex;
-        int             ifr_metric;
-        int             ifr_mtu;
-//      struct ifmap    ifr_map;
-        char            ifr_slave[IFNAMSIZ];
-        char            ifr_newname[IFNAMSIZ];
-        char           *ifr_data;
-    };
-};
-
-extern int
-socketopen(int domain, int type, int protocol);
-struct socket *
-socketget(int index);
-extern int
-socketclose(struct socket *s);
-extern int
-socketioctl(struct socket *s, int req, void *arg);
-
-#ifdef __cplusplus
-}
-#endif
+#define SIOCGIFINDEX   _IOWR('i',  0, struct ifreq)
+#define SIOCGIFNAME    _IOWR('i',  1, struct ifreq)
+#define SIOCSIFNAME     _IOW('i',  2, struct ifreq)
+#define SIOCGIFHWADDR  _IOWR('i',  3, struct ifreq)
+#define SIOCSIFHWADDR   _IOW('i',  4, struct ifreq)
+#define SIOCGIFFLAGS   _IOWR('i',  5, struct ifreq)
+#define SIOCSIFFLAGS    _IOW('i',  6, struct ifreq)
+#define SIOCGIFADDR    _IOWR('i',  7, struct ifreq)
+#define SIOCSIFADDR     _IOW('i',  8, struct ifreq)
+#define SIOCGIFNETMASK _IOWR('i',  9, struct ifreq)
+#define SIOCSIFNETMASK  _IOW('i', 10, struct ifreq)
+#define SIOCGIFBRDADDR _IOWR('i', 11, struct ifreq)
+#define SIOCSIFBRDADDR  _IOW('i', 12, struct ifreq)
+#define SIOCGIFMTU     _IOWR('i', 13, struct ifreq)
+#define SIOCSIFMTU      _IOW('i', 14, struct ifreq)
