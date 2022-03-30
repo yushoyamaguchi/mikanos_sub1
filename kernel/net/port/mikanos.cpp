@@ -189,7 +189,7 @@ cond_destroy(cond_t *cond)
 void
 softirq(void)
 {
-    // TODO: implement
+    task_manager->SendMessage(1, Message{Message::kNetInput});
 }
 
 void
