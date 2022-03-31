@@ -55,8 +55,8 @@ struct SyscallResult SyscallSocketAccept(int soc, struct sockaddr *peer, int *pe
 struct SyscallResult SyscallSocketConnect(int soc, struct sockaddr *addr, int addrlen);
 struct SyscallResult SyscallSocketRecv(int soc, char *buf, int n);
 struct SyscallResult SyscallSocketSend(int soc, char *buf, int n);
-struct SyscallResult MutexLock(mutex_t *mutex);
-struct SyscallResult MutexUnlock(mutex_t *mutex);
+struct SyscallResult SyscallMutexLock(mutex_t *mutex);
+struct SyscallResult SyscallMutexUnlock(mutex_t *mutex);
 
 #ifdef __cplusplus
 } // extern "C"
