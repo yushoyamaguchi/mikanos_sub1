@@ -10,6 +10,7 @@ extern "C" {
 
 #include "../kernel/logger.hpp"
 #include "../kernel/app_event.hpp"
+#include "../kernel/net/port/mikanos.hpp"
 
 struct SyscallResult {
   uint64_t value;
@@ -54,6 +55,8 @@ struct SyscallResult SyscallSocketAccept(int soc, struct sockaddr *peer, int *pe
 struct SyscallResult SyscallSocketConnect(int soc, struct sockaddr *addr, int addrlen);
 struct SyscallResult SyscallSocketRecv(int soc, char *buf, int n);
 struct SyscallResult SyscallSocketSend(int soc, char *buf, int n);
+struct SyscallResult MutexLock(mutex_t *mutex);
+struct SyscallResult MutexUnlock(mutex_t *mutex);
 
 #ifdef __cplusplus
 } // extern "C"

@@ -37,3 +37,5 @@ define_syscall SocketAccept,     0x80000017
 define_syscall SocketConnect,    0x80000018
 define_syscall SocketRecv,       0x80000019
 define_syscall SocketSend,       0x8000001a
+define_syscall MutexLock,        0x8000001b
+define_syscall MutexUnlock,      0x8000001c
