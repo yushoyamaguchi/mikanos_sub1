@@ -57,6 +57,7 @@ struct SyscallResult SyscallSocketRecv(int soc, char *buf, int n);
 struct SyscallResult SyscallSocketSend(int soc, char *buf, int n);
 struct SyscallResult SyscallMutexLock(mutex_t *mutex);
 struct SyscallResult SyscallMutexUnlock(mutex_t *mutex);
+struct SyscallResult SyscallVarSet(int val);
 
 #ifdef __cplusplus
 } // extern "C"

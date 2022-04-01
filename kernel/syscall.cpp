@@ -18,6 +18,7 @@
 
 #include "net/socket.h"
 #include "net/port/mikanos.hpp"
+#include "exclude/variable.hpp"
 
 namespace syscall {
   struct Result {
@@ -473,6 +474,11 @@ SYSCALL(MutexUnlock) {
   return {ret, 0};
 }
 
+SYSCALL(VarSet) {
+  uint64_t ret = var_set((int)arg1);
+  return {ret, 0};
+}
+
 
 #undef SYSCALL
 
@@ -480,7 +486,7 @@ SYSCALL(MutexUnlock) {
 
 using SyscallFuncType = syscall::Result (uint64_t, uint64_t, uint64_t,
                                          uint64_t, uint64_t, uint64_t);
-extern "C" std::array<SyscallFuncType*, 0x1d> syscall_table{
+extern "C" std::array<SyscallFuncType*, 0x1e> syscall_table{
   /* 0x00 */ syscall::LogString,
   /* 0x01 */ syscall::PutString,
   /* 0x02 */ syscall::Exit,
@@ -510,6 +516,7 @@ extern "C" std::array<SyscallFuncType*, 0x1d> syscall_table{
   /* 0x1a */ syscall::SocketSend,
   /* 0x1b */ syscall::MutexLock,
   /* 0x1c */ syscall::MutexUnlock,
+  /* 0x1d */ syscall::VarSet,
 };
 
 void InitializeSyscall() {
