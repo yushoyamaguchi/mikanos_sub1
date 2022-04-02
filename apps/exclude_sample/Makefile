@@ -1,3 +1,3 @@
-TARGET = exclude_sample
-OBJS = exclude_sample.o
+TARGET = var
+OBJS = var.o
 include ../Makefile.elfapp
