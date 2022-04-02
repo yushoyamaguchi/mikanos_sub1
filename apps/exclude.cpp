@@ -1,7 +1,9 @@
-#include <stdio.h>
-#include <stddef.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <signal.h>
 
 #include "syscall.h"
 #include "exclude.hpp"
