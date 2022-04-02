@@ -479,6 +479,11 @@ SYSCALL(VarSet) {
   return {ret, 0};
 }
 
+SYSCALL(VarGet) {
+  uint64_t ret = var_get((int)arg1);
+  return {ret, 0};
+}
+
 
 #undef SYSCALL
 
@@ -486,7 +491,7 @@ SYSCALL(VarSet) {
 
 using SyscallFuncType = syscall::Result (uint64_t, uint64_t, uint64_t,
                                          uint64_t, uint64_t, uint64_t);
-extern "C" std::array<SyscallFuncType*, 0x1e> syscall_table{
+extern "C" std::array<SyscallFuncType*, 0x1f> syscall_table{
   /* 0x00 */ syscall::LogString,
   /* 0x01 */ syscall::PutString,
   /* 0x02 */ syscall::Exit,
@@ -517,6 +522,7 @@ extern "C" std::array<SyscallFuncType*, 0x1e> syscall_table{
   /* 0x1b */ syscall::MutexLock,
   /* 0x1c */ syscall::MutexUnlock,
   /* 0x1d */ syscall::VarSet,
+  /* 0x1e */ syscall::VarGet,
 };
 
 void InitializeSyscall() {

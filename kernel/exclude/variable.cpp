@@ -12,3 +12,7 @@ int var_set(int val){
     variable=val;
     return 1;
 }
+
+int var_get(){
+    return variable;
+}
