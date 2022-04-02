@@ -480,7 +480,7 @@ SYSCALL(VarSet) {
 }
 
 SYSCALL(VarGet) {
-  uint64_t ret = var_get((int)arg1);
+  uint64_t ret = var_get();
   return {ret, 0};
 }
 

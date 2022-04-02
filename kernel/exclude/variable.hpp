@@ -8,3 +8,6 @@
 
 extern int
 var_set(int val);
+
+extern int
+var_get();
