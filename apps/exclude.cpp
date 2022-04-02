@@ -24,3 +24,9 @@ void
 var_set_app(int val){
     SyscallVarSet(val);
 }
+
+int
+var_get_app(){
+    auto [ret, err] =SyscallVarGet();
+    return ret;
+}

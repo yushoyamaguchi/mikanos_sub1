@@ -19,6 +19,9 @@ mutex_unlock_app(mutex_t *mutex);
 void
 var_set_app(int val);
 
+int
+var_get_app();
+
 #ifdef __cplusplus
 } // extern "C"
 #endif
