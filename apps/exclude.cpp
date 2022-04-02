@@ -17,3 +17,8 @@ mutex_unlock_app(mutex_t *mutex){
     auto [ret, err] = SyscallMutexUnlock(mutex);
     return ret;
 }
+
+void
+var_set_app(int val){
+    SyscallVarSet(val);
+}
