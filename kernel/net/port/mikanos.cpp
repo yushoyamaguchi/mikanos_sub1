@@ -16,7 +16,7 @@
 
 static int ncli=0;
 
-mutex_t sample_mutex={0};
+static mutex_t sample_mutex={0};
 
 
 
