@@ -54,6 +54,6 @@ sleep_app(unsigned long ms){
             //printf("unknown event: type = %d\n", events[0].type);
         }
     }
-    exit(0);
+    return;
 }
 
