@@ -58,7 +58,7 @@ sleep_app(unsigned long ms){
 }
 
 mutex_t* get_sample_mutex_app(){
-    auto [ret, err] =SyscallVarGet();
+    auto [ret, err] =SyscallGetSampleMutex();
     mutex_t *ret_m;
     ret_m=(mutex_t *)ret;
     return ret_m;    
