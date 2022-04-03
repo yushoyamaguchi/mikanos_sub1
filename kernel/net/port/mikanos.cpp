@@ -16,6 +16,9 @@
 
 static int ncli=0;
 
+static mutex_t sample_mutex={0};
+
+
 
 void
 flockfile(FILE *fp)
@@ -146,6 +149,10 @@ mutex_unlock(mutex_t *mutex)
     xchg(&mutex->locked, 0);
     __asm__("sti");
     return 0;
+}
+
+mutex_t* get_sample_mutex(){
+    return &sample_mutex;
 }
 
 int

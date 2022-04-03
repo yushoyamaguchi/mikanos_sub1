@@ -57,3 +57,9 @@ sleep_app(unsigned long ms){
     return;
 }
 
+mutex_t* get_sample_mutex_app(){
+    auto [ret, err] =SyscallVarGet();
+    mutex_t *ret_m;
+    ret_m=(mutex_t *)ret;
+    return ret_m;    
+}

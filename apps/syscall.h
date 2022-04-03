@@ -60,6 +60,7 @@ struct SyscallResult SyscallMutexUnlock(mutex_t *mutex);
 struct SyscallResult SyscallVarSet(int val);
 struct SyscallResult SyscallVarGet();
 struct SyscallResult SyscallMutexInit(mutex_t *mutex);
+struct SyscallResult SyscallGetSampleMutex();
 
 #ifdef __cplusplus
 } // extern "C"
