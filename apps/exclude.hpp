@@ -25,6 +25,9 @@ var_set_app(int val);
 extern int
 var_get_app();
 
+void
+sleep_app(unsigned long ms);
+
 
 
 #ifdef __cplusplus

@@ -4,6 +4,9 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 #include "syscall.h"
 #include "exclude.hpp"
@@ -35,5 +38,22 @@ int
 var_get_app(){
     auto [ret, err] =SyscallVarGet();
     return ret;
+}
+
+void
+sleep_app(unsigned long ms){
+    const unsigned long duration_ms = (const unsigned long)ms;
+    const auto timeout = SyscallCreateTimer(TIMER_ONESHOT_REL, 1, duration_ms);
+    AppEvent events[1];
+    while (true) {
+        SyscallReadEvent(events, 1);
+        if (events[0].type == AppEvent::kTimerTimeout) {
+            //printf("%lu msecs elapsed!\n", duration_ms);
+            break;
+        } else {
+            //printf("unknown event: type = %d\n", events[0].type);
+        }
+    }
+    exit(0);
 }
 
