@@ -6,6 +6,7 @@
 int main(){
     int var;
     mutex_t mutex;
+    mutex.locked=0;
     mutex_lock_app(&mutex);
     var_set_app(5);
     var=var_get_app();
