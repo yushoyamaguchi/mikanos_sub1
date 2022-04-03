@@ -9,6 +9,12 @@
 #include "exclude.hpp"
 
 int
+mutex_init_app(mutex_t *mutex){
+    auto [ret, err] = SyscallMutexInit(mutex);
+    return ret;
+}
+
+int
 mutex_lock_app(mutex_t *mutex){
     auto [ret, err] = SyscallMutexLock(mutex);
     return ret;
@@ -30,3 +36,4 @@ var_get_app(){
     auto [ret, err] =SyscallVarGet();
     return ret;
 }
+

@@ -41,3 +41,4 @@ define_syscall MutexLock,        0x8000001b
 define_syscall MutexUnlock,      0x8000001c
 define_syscall VarSet,           0x8000001d
 define_syscall VarGet,           0x8000001e
+define_syscall MutexInit,        0x8000001f

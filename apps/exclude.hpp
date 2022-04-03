@@ -11,6 +11,9 @@ extern "C" {
 #include "../kernel/net/port/mikanos.hpp"
 
 extern int
+mutex_init_app(mutex_t *mutex);
+
+extern int
 mutex_lock_app(mutex_t *mutex);
 
 extern int
@@ -19,8 +22,10 @@ mutex_unlock_app(mutex_t *mutex);
 void
 var_set_app(int val);
 
-int
+extern int
 var_get_app();
+
+
 
 #ifdef __cplusplus
 } // extern "C"
