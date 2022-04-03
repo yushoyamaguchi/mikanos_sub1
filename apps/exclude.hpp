@@ -28,6 +28,9 @@ var_get_app();
 void
 sleep_app(unsigned long ms);
 
+mutex_t* 
+get_sample_mutex_app();
+
 
 
 #ifdef __cplusplus
