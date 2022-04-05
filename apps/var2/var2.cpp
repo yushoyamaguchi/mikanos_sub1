@@ -7,7 +7,7 @@
 #include "../syscall.h"
 #include "../exclude.hpp"
 
-#define BIG_IN_APP 10000
+#define BIG_IN_APP 5000
 
 extern "C" void main(){
     int var=0;
