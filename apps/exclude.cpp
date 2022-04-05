@@ -40,6 +40,12 @@ var_get_app(){
     return ret;
 }
 
+int
+var_plus_one_app(){
+    auto [ret, err] =SyscallVarPlusOne();
+    return ret;
+}
+
 void
 sleep_app(unsigned long ms){
     const unsigned long duration_ms = (const unsigned long)ms;
