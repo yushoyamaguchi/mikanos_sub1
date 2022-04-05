@@ -136,7 +136,8 @@ mutex_init(mutex_t *mutex, const void *attr)
 int
 mutex_lock(mutex_t *mutex)
 {
-    pushcli();
+    //pushcli();
+    __asm__("cli");
     while (xchg(&mutex->locked, 1) != 0){
         asm volatile ("pause");
     }
@@ -147,7 +148,8 @@ int
 mutex_unlock(mutex_t *mutex)
 {
     xchg(&mutex->locked, 0);
-    popcli();
+    //popcli();
+    __asm__("sti");
     return 0;
 }
 
