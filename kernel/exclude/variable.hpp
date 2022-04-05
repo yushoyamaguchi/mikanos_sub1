@@ -16,4 +16,4 @@ extern int
 var_get();
 
 extern int 
-var_plus10000();
+var_plus_big();

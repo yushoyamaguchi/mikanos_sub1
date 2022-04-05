@@ -494,6 +494,11 @@ SYSCALL(GetSampleMutex) {
   return {ret, 0};
 }
 
+SYSCALL(VarPlusBig) {
+  uint64_t ret = var_plus_big();
+  return {ret, 0};
+}
+
 
 #undef SYSCALL
 
@@ -501,7 +506,7 @@ SYSCALL(GetSampleMutex) {
 
 using SyscallFuncType = syscall::Result (uint64_t, uint64_t, uint64_t,
                                          uint64_t, uint64_t, uint64_t);
-extern "C" std::array<SyscallFuncType*, 0x21> syscall_table{
+extern "C" std::array<SyscallFuncType*, 0x22> syscall_table{
   /* 0x00 */ syscall::LogString,
   /* 0x01 */ syscall::PutString,
   /* 0x02 */ syscall::Exit,
@@ -535,6 +540,7 @@ extern "C" std::array<SyscallFuncType*, 0x21> syscall_table{
   /* 0x1e */ syscall::VarGet,
   /* 0x1f */ syscall::MutexInit,
   /* 0x20 */ syscall::GetSampleMutex,
+  /* 0x21 */ syscall::VarPlusBig,
 };
 
 void InitializeSyscall() {
