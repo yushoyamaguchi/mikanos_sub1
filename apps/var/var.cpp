@@ -15,8 +15,8 @@ extern "C" void main(){
     //smutex=get_sample_mutex_app();
     printf("mutex->locked=%d\n",mutex.locked);
     mutex_lock_app(&mutex);
-    var_set_app(5);
-    sleep_app(6000);
+    var_set_app(1);
+    //sleep_app(6000);
     var=var_get_app();
     printf("var=%d\n",var);
     mutex_unlock_app(&mutex);

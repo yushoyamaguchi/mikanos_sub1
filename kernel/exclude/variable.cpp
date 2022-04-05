@@ -10,7 +10,7 @@
 static int variable=0;
 
 int var_set(int val){
-    variable=val;
+    variable+=val;
     return 1;
 }
 
