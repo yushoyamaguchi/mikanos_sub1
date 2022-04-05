@@ -10,8 +10,9 @@
 extern "C" void main(){
     int var;
     mutex_t mutex;
+    //mutex_t *smutex;
     mutex_init_app(&mutex);
-    //mutex=get_sample_mutex_app();
+    smutex=get_sample_mutex_app();
     printf("mutex->locked=%d\n",mutex.locked);
     mutex_lock_app(&mutex);
     var_set_app(5);
