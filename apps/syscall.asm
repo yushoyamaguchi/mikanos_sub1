@@ -44,3 +44,4 @@ define_syscall VarGet,           0x8000001e
 define_syscall MutexInit,        0x8000001f
 define_syscall GetSampleMutex,   0x80000020
 define_syscall VarPlusBig,       0x80000021
+define_syscall VarPlusOne,       0x80000022

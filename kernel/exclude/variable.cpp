@@ -33,3 +33,8 @@ int var_plus_big(){
     }
     return variable;
 }
+
+int var_plus_one(){
+    variable+=1;
+    return variable;
+}

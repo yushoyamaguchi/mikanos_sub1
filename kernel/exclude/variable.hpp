@@ -17,3 +17,6 @@ var_get();
 
 extern int 
 var_plus_big();
+
+extern int 
+var_plus_one();

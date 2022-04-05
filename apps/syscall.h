@@ -62,6 +62,7 @@ struct SyscallResult SyscallVarGet();
 struct SyscallResult SyscallMutexInit(mutex_t *mutex);
 struct SyscallResult SyscallGetSampleMutex();
 struct SyscallResult SyscallVarPlusBig();
+struct SyscallResult SyscallVarPlusOne();
 
 #ifdef __cplusplus
 } // extern "C"
