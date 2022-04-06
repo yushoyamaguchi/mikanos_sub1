@@ -15,7 +15,7 @@ lprintf(FILE *fp, int level, const char *file, int line, const char *func, const
 extern void
 hexdump(FILE *fp, const void *data, size_t size);
 
-#define MUTEX_INITIALIZER {}
+#define MUTEX_INITIALIZER {0}
 
 typedef struct {
     uint32_t locked;

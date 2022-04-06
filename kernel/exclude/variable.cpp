@@ -13,7 +13,7 @@
 
 static int variable=0;
 
-static mutex_t mutex={0};
+static mutex_t mutex=MUTEX_INITIALIZER;
 
 int var_set(int val){
     variable+=val;
