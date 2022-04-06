@@ -174,11 +174,11 @@ int isPrimeNumber(long n) {
     return 1;
 }
 
+
 int var_plus_one(){
     int buf=0;
-    //mutex_lock(&mutex);
+    mutex_lock(&mutex);
     buf=variable;
-    //sleep_var(10);
     long p=0;
     int arr[BIG];
     while(p<=BIG){
@@ -188,7 +188,7 @@ int var_plus_one(){
         p++;
     }
     variable=buf+1;
-    //mutex_unlock(&mutex);
+    mutex_unlock(&mutex);
     const auto time=timer_manager->CurrentTick();
     infof("%d",arr[time]);
     return variable;

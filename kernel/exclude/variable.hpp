@@ -18,7 +18,7 @@
 #include "../net/util.h"
 #include "../net/port/mikanos.hpp"
 
-#define BIG 10000
+#define BIG 1000
 
 #define TIMER_ONESHOT_REL 1
 
