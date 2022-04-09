@@ -29,16 +29,6 @@ mutex_unlock_app(mutex_t *mutex){
     return ret;
 }
 
-void
-var_set_app(int val){
-    SyscallVarSet(val);
-}
-
-int
-var_get_app(){
-    auto [ret, err] =SyscallVarGet();
-    return ret;
-}
 
 int
 var_plus_one_app(){
@@ -63,9 +53,4 @@ sleep_app(unsigned long ms){
     return;
 }
 
-mutex_t* get_sample_mutex_app(){
-    auto [ret, err] =SyscallGetSampleMutex();
-    mutex_t *ret_m;
-    ret_m=(mutex_t *)ret;
-    return ret_m;    
-}
+

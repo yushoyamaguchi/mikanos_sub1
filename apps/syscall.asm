@@ -39,9 +39,5 @@ define_syscall SocketRecv,       0x80000019
 define_syscall SocketSend,       0x8000001a
 define_syscall MutexLock,        0x8000001b
 define_syscall MutexUnlock,      0x8000001c
-define_syscall VarSet,           0x8000001d
-define_syscall VarGet,           0x8000001e
-define_syscall MutexInit,        0x8000001f
-define_syscall GetSampleMutex,   0x80000020
-define_syscall VarPlusBig,       0x80000021
-define_syscall VarPlusOne,       0x80000022
+define_syscall MutexInit,        0x8000001d
+define_syscall VarPlusOne,       0x8000001e

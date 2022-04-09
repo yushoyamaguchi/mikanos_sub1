@@ -57,11 +57,7 @@ struct SyscallResult SyscallSocketRecv(int soc, char *buf, int n);
 struct SyscallResult SyscallSocketSend(int soc, char *buf, int n);
 struct SyscallResult SyscallMutexLock(mutex_t *mutex);
 struct SyscallResult SyscallMutexUnlock(mutex_t *mutex);
-struct SyscallResult SyscallVarSet(int val);
-struct SyscallResult SyscallVarGet();
 struct SyscallResult SyscallMutexInit(mutex_t *mutex);
-struct SyscallResult SyscallGetSampleMutex();
-struct SyscallResult SyscallVarPlusBig();
 struct SyscallResult SyscallVarPlusOne();
 
 #ifdef __cplusplus

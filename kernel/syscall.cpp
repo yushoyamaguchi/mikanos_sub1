@@ -474,30 +474,13 @@ SYSCALL(MutexUnlock) {
   return {ret, 0};
 }
 
-SYSCALL(VarSet) {
-  uint64_t ret = var_set((int)arg1);
-  return {ret, 0};
-}
-
-SYSCALL(VarGet) {
-  uint64_t ret = var_get();
-  return {ret, 0};
-}
 
 SYSCALL(MutexInit) {
   uint64_t ret = mutex_init((mutex_t *)arg1,NULL);
   return {ret, 0};
 }
 
-SYSCALL(GetSampleMutex) {
-  uint64_t ret = (uint64_t)get_sample_mutex();
-  return {ret, 0};
-}
 
-SYSCALL(VarPlusBig) {
-  uint64_t ret = var_plus_big();
-  return {ret, 0};
-}
 
 SYSCALL(VarPlusOne) {
   uint64_t ret = var_plus_one();
@@ -511,7 +494,7 @@ SYSCALL(VarPlusOne) {
 
 using SyscallFuncType = syscall::Result (uint64_t, uint64_t, uint64_t,
                                          uint64_t, uint64_t, uint64_t);
-extern "C" std::array<SyscallFuncType*, 0x23> syscall_table{
+extern "C" std::array<SyscallFuncType*, 0x1f> syscall_table{
   /* 0x00 */ syscall::LogString,
   /* 0x01 */ syscall::PutString,
   /* 0x02 */ syscall::Exit,
@@ -541,12 +524,8 @@ extern "C" std::array<SyscallFuncType*, 0x23> syscall_table{
   /* 0x1a */ syscall::SocketSend,
   /* 0x1b */ syscall::MutexLock,
   /* 0x1c */ syscall::MutexUnlock,
-  /* 0x1d */ syscall::VarSet,
-  /* 0x1e */ syscall::VarGet,
-  /* 0x1f */ syscall::MutexInit,
-  /* 0x20 */ syscall::GetSampleMutex,
-  /* 0x21 */ syscall::VarPlusBig,
-  /* 0x22 */ syscall::VarPlusOne,  
+  /* 0x1d */ syscall::MutexInit,
+  /* 0x1e */ syscall::VarPlusOne,  
 };
 
 void InitializeSyscall() {
