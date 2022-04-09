@@ -24,11 +24,15 @@ typedef struct {
 extern int
 mutex_init(mutex_t *mutex, const void *attr);
 extern int
+spin_lock(mutex_t *mutex);
+extern int
 mutex_lock(mutex_t *mutex);
 extern int
+spin_unlock(mutex_t *mutex);
+extern int
 mutex_unlock(mutex_t *mutex);
-mutex_t* 
-get_sample_mutex();
+
+
 
 #define COND_INITIALIZER {}
 

@@ -16,7 +16,7 @@
 
 static int ncli=0;
 
-static mutex_t sample_mutex={0};
+
 
 
 
@@ -162,9 +162,7 @@ mutex_unlock(mutex_t *mutex)
     return spin_unlock(mutex);
 }
 
-mutex_t* get_sample_mutex(){
-    return &sample_mutex;
-}
+
 
 int
 cond_init(cond_t *cond, const void *attr)
