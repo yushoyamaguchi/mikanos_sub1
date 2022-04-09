@@ -134,8 +134,7 @@ mutex_init(mutex_t *mutex, const void *attr)
 }
 
 int
-mutex_lock(mutex_t *mutex)
-{
+spin_lock(mutex_t *mutex){
     pushcli();
     while (xchg(&mutex->locked, 1) != 0){
         asm volatile ("pause");
@@ -144,11 +143,23 @@ mutex_lock(mutex_t *mutex)
 }
 
 int
-mutex_unlock(mutex_t *mutex)
+mutex_lock(mutex_t *mutex)
+{
+    return spin_lock(mutex);
+}
+
+int
+spin_unlock(mutex_t *mutex)
 {
     xchg(&mutex->locked, 0);
     popcli();
     return 0;
+}
+
+int
+mutex_unlock(mutex_t *mutex)
+{
+    return spin_unlock(mutex);
 }
 
 mutex_t* get_sample_mutex(){
